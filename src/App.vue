@@ -1,16 +1,45 @@
 <template>
-  <div id="app" @mouseenter="getStudentsMethod" @mousemove="setData" @mousedown="setData" @mouseleave="setData" @mouseout="setData" @mouseover="setData" @mouseup="setData" @mousewheel="setData">
+  <div
+    id="app"
+    @mouseenter="
+      getStudentsMethod();
+      setData();
+    "
+    @mousemove="setData()"
+    @mousedown="setData()"
+    @mouseleave="
+      getStudentsMethod();
+      setData();
+    "
+    @mouseout="
+      getStudentsMethod();
+      setData();
+    "
+    @mouseover="
+      getStudentsMethod();
+      setData();
+    "
+    @mouseup="setData()"
+    @mousewheel="
+      getStudentsMethod();
+      setData();
+    "
+    @click="
+      getStudentsMethod();
+      setData();
+    "
+    @keydown.enter="setData"
+  >
     <SearchAutocomplete :items="students" />
     <!-- :items="" -->
   </div>
 </template>
 
-
 <script>
 import SearchAutocomplete from "./components/SearchAutocomplete.vue";
 // import Vue from "vue";
 // import Vue3TouchEvents from "vue3-touch-events";
-// import ShowPeriod from "./components/ShowPeriod.vue";
+import setData from "./components/ShowPeriod.vue";
 // import students_data from "./components/SearchAutocomplete.vue";
 // Vue.use(Vue3TouchEvents);
 export default {
@@ -28,7 +57,8 @@ export default {
   },
   methods: {
     getStudentsMethod() {
-      var students = "http://127.0.0.1:8000/load/students";
+      var students =
+        "https://sos-time-table-app-backend.herokuapp.com/load/students";
       fetch(students)
         .then((response) => {
           return response.json();
@@ -49,9 +79,9 @@ export default {
           // return myJson;
         });
     },
-    hello(){
-      alert("Hello World")
-    }
+    hello() {
+      alert("Hello World");
+    },
   },
   mounted() {
     // if (document.getElementById("my-datatable")) return; // was already loaded
@@ -71,9 +101,9 @@ export default {
       var retrievedStudents = localStorage.getItem("students");
       var students_array = retrievedStudents;
       // console.log(students_array);
+      setData();
       return students_array;
     },
-    
   },
 };
 </script>

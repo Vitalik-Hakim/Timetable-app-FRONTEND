@@ -7,8 +7,9 @@
     </header> -->
           <div class="logo">
             <img
+              class="img-google"
               alt="Google"
-              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAH8AAAB3CAMAAAAdMG9MAAAAmVBMVEX///8AAAAREiTf3+AREh0ODyP8/Pzy8vL4+Pjs7OwmJibj4+PPz8/Ly8vv7+8QEBBQUFAdHR3X19c8PDwVFRVKSko0NDRWVlZ/f39BQUFjY2Ofn5+xsbFxcXG+vr5eXl6Ojo6oqKgAABqWlpYAABYtLS1dXWYAABAjIzBlZXBwcHcvMDxCQk14eIGGhohRUlodHSaEhY44OUOUyx7xAAAOrUlEQVRoge1bCXecPLKVwph9X8UiAca0Y8fB8+X//7ipEnQ3ayfeJmfeeXVimgaakqpu3SotIeT/5X9VdF3TXFfTdfW/rtoQHavzNKYgZpRw1traf0u33WWUxnVTCscOFSV0RNV1NfU8VhlfrVuvCkqLMtyxuCaGiAZd+IXabU5TZuuH91WjrWlUuV+iXBeJV9xQPolVpkFjfb76KvW6P3stNJSyT0aCE9H2t12/ip3Q7hO1G/WbX+f0VHyW+pLyY3Nqdrh/s6XZpwDRyLxNT3QFDk2NUWibnOUQdOom8IziM0zg0HrFbK7DCgaqI17BN8HhLwHc0+1vWzp8lJrbjec7nycIRaUwcmhZxS2j6/Bzat382TCuP+YDtjIhxBW8kGKvSkFK0NtmTU3hmjQGmGIZeroffyQSfW/+a60JRiUZNirLkhxe3rRwIwZFCAmiJqGT1PbsRw1V3qtdzdK59bqsms5asLVKXZ20BSlalTgmCRN5x4nhEC5cVtJ5c94gemEuKKcDrWGNHGjlusQd0bnaFZzXIbYEpahrZw259zaAx1fgGw5YORe8GKMMAi68kjG2UhQFEyRMicWytcE7+p6kONCZ7xm1sCP4HgPUGTvFhu60pO6mB1av8t4OwpbPu2HXgUq01CIKz268K+S+s3edp29VHy4DT4+cHNpUFPVvTGkM/Y631ah+m3qVlpfzmoPtmTUMRP+ddtmCPfsYtB1PLNF1G4RuhfvX8yaqG81pyCX8/kwsMVfjAICMsPMDrFhvuVCKmGOP1FWVtD7Rdn6lqod9KegCCnXOTXqW5HaxrJ2tBbED3tT7UG3omshd0fA6ifKsYOWeW8LyEgduxXq6kHbnB1fhyeXUQRxagUGW/XQYpQFvyqqq2pIlYNLqoEu6UwZ0I9kt9faFsi0VdAMSxQK+WkkpF3N9athFlG+soDllvtUtxyy3EOCz8+97MKEbNSPFnTtU0nyns2rIaTGjDD1sa3OjN/Gmk12aGEVc2KqQoawmbHbXSU1xgDmloJ28pRqC73Y8zs/6m2P96fmemDhInzFKM6nYF6dPLN1usqWtp0/fp+YZhsExIdrn2DN6K13VXmr+m1QS7mAtQn2DcOHNV0kPq/lsmE4w9Fo6Jx3jJm6VttgHWz2OyNxqcgL8M/0jMjMW1EOspLiem/xItyXYFWwpGmHmgwZ02110dn2cUTg9elW36qJ+wbQb7f/GsLsENXrx2eCjl4OIe1InlKt8bg/P8+G4r141D2v2zN8iT1fK4oKpJeSZYVF/PLWgBLmI6VEPIbFfFoYH7QLkBxsGrli673EU8Nv5tILXYgOlNaLJTPsUzI78Ei6Rr4thX3dW2pruABh6F6qmERR8bMoIAC/1pBF2FenRkfnN5vqQ0x3QanCmJgO+2GQCPI20GQA8s0fzx3SPRxR6QMzV9DjSKoItbrwd9WAjTfB0wOoRBk7G+QbUx6C4GBthcpojNe8BoI0up4uG6DjyUK05rcZXvV7RKpm8VMI4EERA3qRQsNXgI1QKl7ljSC9AlEQYIn29xwDFmXyArOYAEVR3Gt+bsdsZ9WiGVD4hvQ86AsSeblIYHHXp2NIxpl0R016aLY56lhVbB6hX94dz5gtz0xsNfJFImnJwUC8OelRpGcirDD9hdIxWEFMTAYvhmBX8eNIPLLBNolawpXerutBqsUgs03QfGoJYFuoKMK9KnQaB5jBinBvsIAAur4m71KR7Odg2l20CWt1JKBQa1Ej0aE4n7aBqkKJThERDDLBUj/anHnDWhNLxsvRb6vW0j/G1bKO/yq/nhtMk8Y7yOGvCFsCh28olo7kkUsZoA/wmfuOOXrBgyETPuBjpwoTUS6NIRkKyAUAz1VmaUtarinHUnTNhSHBELIf2a9P1kKTQmXi0vIGvdUWAvHduIJQ0jfxMc5qlmAKKgSabCCwa7PgurZpe7I1zIRgJ8pKvkwkaDvE9i7R4KrBeKUsVccCJe34TYhF6TjNW93Vgov397fRQUjpNtNNvCLHKsKUZ2xkGL3lFAL8NREUDMOIitoD9MwRAPT06YjHrHKjA0gBKSOqzFQWrTrcCW3zN6WAYLcK4GjnMk/2a8gqeMLR8i3wPOj06+R5BMVrAwwkbrHnajMGlJO3TPLtW1WrYZitChWwVxzRnY3+xqfwSXlMuuaS4Eg0xEM2kF9CVwOXIexLDPR153RCD6THPi8ACdepd6uxmN5eBjkofCZXiiESgGaxYAhMdmPJzYdFB1ynVpOZ2NApQYIyHzKzL0MhppYVlFtEAStAg7j2T5vF5XsRN6Jrd0GMQZRJwUkVPNPQgNCOT+pGKe3gBPAOFVSPNAkFuoqXAUSYWPRmNNSJnR1VO05EwYwBhn8a5mSaX+AcFaQx58WKEYLA5qIboylTMiXiJhJqeYB8H+R581hzTDS+gnxhoqYpBFquyxYVkZKRTvWJnTE8agsloo6CBIS1AfMnrXNKq6AvJ4Xgug4xUFoJMgKaoc5QRmf4U9D4JuSxyXQ91AhNxV76XWWWUz4AVyOKQR0lzHcTMyvK0lbNKSKueKSkD9I3+JE47AkBFPToyQN4HkugSOo5XFUBLg/3S0LFaIl+5HIPBt7gflisk+HrPD7Dzpi4HO1yCT4wUIiz5XVeATUCnjis9LOljOqYQMXpHFQzqqhYfwYJdVcrt4A9hLLp8PT+DoKGpKQ3ZQIGhSDAjZajI0ZBasIWGkWjEx/AKs9GSHh3jQVpHk66N0ABm6LBkR3fgNyGAmG5WUVbDFhm5wLeQiySCchcNEGpw2sw4Z3QYcKbUj02DTlRnflhLysSoV6GbtN8tQ48TXdYSnoJ3KtIMqNIhQYlVFSfqnKi0Ma9oZKSpkTHXpufVNdPY8Vr9GGBXgaAFUEXBmL4KOSDlgIYUi6v1YKbCNqFXFkaU3fEkUdSryZnS3+jXU2rO+2SjET0ZwgHtdQJIsEBRBBGR0Vy5lNVmgCDRUkgGxR7agqyxNym+Hjb6obvePEibKa/HMn3ZcIAQKMHRsooqx7La5DkkZBpo9iZhxhKSzDEm5frMBGq6M8CoLswkpZ5ANTJJCYeBKAws3CAQwH5B0jhTQUH30nVaVF1/HeA7s0RrxTsTCMby57E1vbsd9YUUiosKiBeKq6gGL8hcpld7pSFYssSl8P46fwpjtWvIiX5vnmyV/sQIKig3VOieTkyZKjqsooqxbHU6X6bAlZg4zSHV7I6u0NXF3tVh+Rp2zutTzudUTr+fKbFKNhGGutmVVlV6NL1R7M7fzEkDaDQf6WSKhA4PTD7ErU7ytMeXDQh4a807zKI9LSBWuruGrNGlhFPh3GASSyXHGkRAmeBFckpjHq0QZeFqZkBsK9tJyp05DJQVAM6Fs0/UDAEA1vAzOWuSR/O63IuYs+2Qcpkq2IxwogO/dEv9xZlkJb227dg8OXkZTGMSc0mrMzGCc2Ej1iOc8Gh471x14wg1OCclR2umy75JzXOs5zindrSo5caXaId03i6aeDi7oq9oZJy7CPo9oNOiuzF7a12HdU1FLPC3uPRZP16J85cqSqnfDPrNLAcXN1d0BW2uLYHwdaAMvECu6w9/1y6r33GACNXy/CLQqpJsype5uGw2a2G1fgW2YBfC1+LjFZxwmQI3EieSVona3diMUJnRgl4qyjXlmm9L77jlawAspB+uPiRKRofdFoh0M6enN/G1Ra53awFrVlRMTh8dErDNfp6wpv56q5MNJUu5wy3WtUks396+SrXTb4+X+1tujCan8VA5imUZii1KICm2yOvadp4+vL0MbS005zSou3BKlXsriqpV8SSFCkiwIK+bze4zEWCMarMsHG2nWxbCJtU+Tk/RmcMJzffXtlTNshRD3643hzC4cXowSHH1eLeZPl6JPk0smIVQtL6Z3ZG7TaTCP1rG1nmRd7gUUrFZMP7BXpgqC7KpVLN2F6j04A+2IYWJgKwFJ0Y8KzXj31h/Le12mIJS/r4bFeR+lsTN4mJhvk09+GvYczobmls7ahSEAit4S9R+3v5uvze3RCvZNpwVKOsUvTlaA3PzTMOZ2AaenP+6urXceNiAdFsq5mh9HSdaVv1RXbthxOVVBA1QTCVMZm0Uh9XgTbHidbauZFlXFQBPhJZlE93CDaD6UAc+jAjcWhUYZoJmM+fZs70Mb2vAaoJuHDqrvk0cH+/knFTe0HSl5hAbEa8VWhvhQwuQ5rcX22+I6yULbpG1TAhQ7nAH0lDwcReQbBtuKdDTpJqtnksR71ePgIq2swXgzEThllKULbETyxGytxluVJAbK9w5brv3+f4sehGvoKth+s915iRuFgLZVEMj3Tu0iPxVa3XmvQP5C+l20GO0pILKKjLwbBInAf3VMhUoafTuzWcXcai/pn3XwJ1WSq2CNVRdk7uh3O24Hsqfz9gZrtf7AWSB393Urznf5eSw+bQdqCI4XhU+EI3RnYmO9wqMQrK37GHTSpq8c9ffgVicFtvJnH0xSvNwj8j7JeQ0qf5gD7TVxX31Jf8jwehw+HNbeRnR+qMhf0McKNOLdm/7v1zcgOqx/eL/jKHbuPqVs9YJLU1H0YzQrro6hkHbF239X4lq2CX3UzMOAtM0AzimSd2IbR38pQLdDm3bcWw7tNwvNvr/YVH+rpB//V0hd39XyLdv3+7uvt19w0/8e3i4l1/wKE++VkD/3Y+Xx9fH+4dvr48PDw9D9/Tj8fGeFr++P3305Xezz8v5HXb3bvwc9X9/enl6fnl+GZ6fn05VNvzTlacW2/FR9d+/Q4egY78eHh7/fQemfXi8//Hj5eXuxy/49/L9Tur/dv98+uf1+fvdz9f8+RstS/5cOHRw/v1R898//XyGLj3B4QSfL6en4efpqX76efrnuTyx08uk/+4X9P7X8+vp6fn1e1lmrCl/VT/5z4eP9v/l5XR6PZ1+PZ1QQP/p5TU//Xr+AddPT08/Jv0AuvsH+LtH7FF6/4j+Byx8UD0YYBR8NX7cP8jj3cOd/P4w+f+vyt/W/x9l/w2aIkK1TAAAAABJRU5ErkJggg=="
+              src="../assets/timetable-logo-new.png"
             />
           </div>
           <div class="bar">
@@ -27,14 +28,22 @@
             />
           </div>
           <span id="spin"></span>
-          <div class="buttons-search">
+          <!-- <div class="buttons-search">
             <button class="button-search" type="button" @click="onEnter">
               Search Me!
             </button>
-          </div>
+          </div> -->
           <div class="buttons">
-            <button class="button" type="button">Free Classes</button>
-            <button class="button" type="button">Report Issue</button>
+            <!-- <button class="button" type="button">Free Classes</button> -->
+            <a href="https://forms.gle/4nwVW75dKLGu6btZ8">
+              <button
+                class="button"
+                type="button"
+                href="https://forms.gle/4nwVW75dKLGu6btZ8"
+              >
+                Report Issue
+              </button>
+            </a>
           </div>
         </center>
       </div>
@@ -89,7 +98,7 @@ export default {
       students_data: "",
       isLoading: false,
       arrowCounter: -1,
-      url_base: "http://127.0.0.1:8000/search/",
+      url_base: "https://sos-time-table-app-backend.herokuapp.com/search/",
       query: "",
       Period: {},
       student_name: "",
@@ -114,7 +123,8 @@ export default {
   },
   methods: {
     getStudents() {
-      var students = "http://127.0.0.1:8000/load/students";
+      var students =
+        "https://sos-time-table-app-backend.herokuapp.com/load/students";
       fetch(students)
         .then((response) => {
           return response.json();
@@ -143,7 +153,7 @@ export default {
       console.log(document.getElementById("keyword").value);
       // I will put my function to fetch here
       this.onEnterdelay();
-      fetch(`http://127.0.0.1:8000/app/failsafe`)
+      fetch(`https://sos-time-table-app-backend.herokuapp.com/app/failsafe`)
         .then((res) => {
           return res.json();
         })
@@ -206,9 +216,8 @@ export default {
           })
           .then(this.setResults);
       }
-      localStorage.removeItem("SEARCHED");
 
-      localStorage.setItem("SEARCH", "1");
+      localStorage.setItem("SEARCHED", "1");
     },
     onEnterdelay() {
       function sleep(time) {
@@ -216,7 +225,7 @@ export default {
       }
       // this.setResult("Searching..")
       // Usage!
-      sleep(5000).then(() => {
+      sleep(5).then(() => {
         // Do something after the sleep!
         this.search = this.results[this.arrowCounter];
         this.isOpen = false;
@@ -234,9 +243,8 @@ export default {
             })
             .then(this.setResults);
         }
-        localStorage.removeItem("SEARCHED");
 
-        localStorage.setItem("SEARCH", "1");
+        localStorage.setItem("SEARCHED", "1");
       });
     },
     setResults(results) {
@@ -320,6 +328,9 @@ export default {
         console.log("retrievedObject: ", JSON.parse(retrievedObjectFour));
         var parsedObjectFour = JSON.parse(retrievedObjectFour);
         console.log(parsedObjectFour["1"]); // This is the day = 1
+        localStorage.removeItem("SEARCHED");
+
+        localStorage.setItem("SEARCHED", "1");
       }
     },
   },
@@ -336,7 +347,7 @@ body {
 }
 body {
   background-color: #eeeeee;
-  font-family: "helvetica", sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 16px;
   transform: translate3d(0, 0, 0);
   background: #1fa2ff; /* fallback for old browsers */
@@ -389,7 +400,8 @@ body {
   margin-left: 400px;
   border-radius: 5px;
   overflow: auto;
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
 }
 
 .autocomplete-result {
@@ -398,7 +410,7 @@ body {
   text-align: left;
   padding: 2px 2px;
   cursor: pointer;
-  color: #0dcf95;
+  color: #000000;
   background: #eeeeee;
 }
 
@@ -578,7 +590,7 @@ li a:hover {
   width: 500px;
   border-radius: 30px;
   font-size: 18px;
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
   margin: 0 auto;
   outline: none;
 }
@@ -633,7 +645,7 @@ li a:hover {
   border: 1px solid #4885ed;
   padding: 9px 19px;
 }
-img {
+.img-google {
   border-radius: 50%;
 }
 /* .search {
@@ -643,7 +655,7 @@ img {
 #spin {
   color: rgb(0, 0, 0);
   font-size: 18px;
-  font-family: "Courier New", Courier, monospace;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
 }
 #spin:after {
   content: "";

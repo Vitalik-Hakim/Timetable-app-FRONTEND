@@ -10,4 +10,8 @@ API
 Rest
 
 Middleware and DataBases
-CORS and a text file as db.
+CORS and a text fi
+
+
+firebase allow
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass

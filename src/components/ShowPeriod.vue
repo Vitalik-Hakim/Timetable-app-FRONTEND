@@ -1,6 +1,17 @@
 <template>
   <!-- partial:index.partial.html -->
-  <div class="container" @mouseenter="setData" @mousemove="setData" @mousedown="setData" @mouseleave="setData" @mouseout="setData" @mouseover="setData" @mouseup="setData" @mousewheel="setData">
+  <div
+    class="container"
+    @mouseenter="setData"
+    @mousemove="setData"
+    @mousedown="setData"
+    @mouseleave="setData"
+    @mouseout="setData"
+    @mouseover="setData"
+    @mouseup="setData"
+    @mousewheel="setData"
+    @keydown.enter="setData"
+  >
     <!-- Loading Div -->
     <div id="myModal" class="modal-loading" v-if="this_loading_div">
       <!-- Modal content -->
@@ -42,7 +53,7 @@
         <span class="atomic-number" @click="jqed">{{ this_room_one }}</span>
         <span class="atomic-mass" @click="jqed">{{ this_teacher_one }}</span>
         <span class="atomic-mass-1" @click="jqed">
-          <h3>{{ this_ends }}</h3>
+          <h4>{{ this_ends }}</h4>
           {{ this_time }}</span
         >
         <button class="flip-btn" @click="jqed">Flip Card</button>
@@ -380,7 +391,11 @@
     </div>
   </div>
 
-  <a class="suppoprt-me" href="https://google.com" target="_blank">
+  <a
+    class="suppoprt-me"
+    href="https://forms.gle/4nwVW75dKLGu6btZ8"
+    target="_blank"
+  >
     <h4>Report Issues</h4>
     <img
       src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white"
@@ -415,6 +430,7 @@ export default {
       this_time: "Loading Data",
       this_ends: "Ends:",
       isSearch: false,
+      result_bool: false,
       this_current_period_one: "Current Period",
       this_period_two: "Loading Data",
       this_teacher_two: "Loading Data",
@@ -471,7 +487,7 @@ export default {
       isNotSplit_three: false,
       isNotSplit_four: false,
       isNotSplit: false,
-      url_base: "http://127.0.0.1:8000/search/",
+      url_base: "https://sos-time-table-app-backend.herokuapp.com/search/",
       query: "",
       Period: {},
       this_loading_div: true,
@@ -549,7 +565,7 @@ export default {
           return "0";
         }
       }
-      // const today = "Wednesday";
+      // const today_number = "2";
       const today_number = getDay(today);
       console.log(today_number);
 
@@ -558,8 +574,23 @@ export default {
       var retrievedObjectOne = localStorage.getItem(`PeriodOne`);
       console.log("retrievedObject: ", JSON.parse(retrievedObjectOne));
       var parsedObjectOne = JSON.parse(retrievedObjectOne);
-      var subjectold_one = parsedObjectOne[today_number];
+      var subjectold_one = parsedObjectOne;
       // Get time
+      // var today_DATE = new Date();
+      // var date_DATE =
+      //   today_DATE.getFullYear() +
+      //   "-" +
+      //   (today_DATE.getMonth() + 1) +
+      //   "-" +
+      //   today_DATE.getDate();
+      // var time =
+      //   today_DATE.getHours() + ":" + today_DATE.getMinutes() + ":" + today.getSeconds();
+      // var dateTime = date_DATE+ " " + time;
+
+      // console.log(dateTime);
+      // var myArray = dateTime.split(" ");
+
+      // localStorage.setItem("time", myArray[1]);
       var retrievedTimeOne = localStorage.getItem("time");
 
       this.this_time = retrievedTimeOne;
@@ -567,7 +598,7 @@ export default {
       //   var subjectoldat = subjectold.replace(/(?:\r\n|\r|\n)/g, "@");
       var subjectoldatOne = subjectold_one.replace("/", "-");
       //   console.log(subjectold);
-      var urlOne = `http://127.0.0.1:8000/process/${subjectoldatOne}`;
+      var urlOne = `https://sos-time-table-app-backend.herokuapp.com/process/${subjectoldatOne}`;
       fetch(urlOne)
         .then((response_one) => {
           return response_one.json();
@@ -630,7 +661,7 @@ export default {
       var retrievedObjectTwo = localStorage.getItem(`PeriodTwo`);
       console.log("retrievedObject: ", JSON.parse(retrievedObjectTwo));
       var parsedObjectTwo = JSON.parse(retrievedObjectTwo);
-      var subjectold_two = parsedObjectTwo[today_number];
+      var subjectold_two = parsedObjectTwo;
       // Get time
       var retrievedTimeTwo = localStorage.getItem("time");
 
@@ -639,7 +670,7 @@ export default {
       //   var subjectoldat = subjectold.replace(/(?:\r\n|\r|\n)/g, "@");
       var subjectoldatTwo = subjectold_two.replace("/", "-");
       //   console.log(subjectold);
-      var urlTwo = `http://127.0.0.1:8000/process/${subjectoldatTwo}`;
+      var urlTwo = `https://sos-time-table-app-backend.herokuapp.com/process/${subjectoldatTwo}`;
       fetch(urlTwo)
         .then((response_two) => {
           return response_two.json();
@@ -704,7 +735,7 @@ export default {
       var retrievedObjectThree = localStorage.getItem(`PeriodThree`);
       console.log("retrievedObject: ", JSON.parse(retrievedObjectThree));
       var parsedObjectThree = JSON.parse(retrievedObjectThree);
-      var subjectold_three = parsedObjectThree[today_number];
+      var subjectold_three = parsedObjectThree;
       // Get time
       var retrievedTimeThree = localStorage.getItem("time");
 
@@ -713,7 +744,7 @@ export default {
       //   var subjectoldat = subjectold.replace(/(?:\r\n|\r|\n)/g, "@");
       var subjectoldatThree = subjectold_three.replace("/", "-");
       //   console.log(subjectold);
-      var urlThree = `http://127.0.0.1:8000/process/${subjectoldatThree}`;
+      var urlThree = `https://sos-time-table-app-backend.herokuapp.com/process/${subjectoldatThree}`;
       fetch(urlThree)
         .then((response_three) => {
           return response_three.json();
@@ -782,7 +813,7 @@ export default {
       var retrievedObjectFour = localStorage.getItem(`PeriodFour`);
       console.log("retrievedObject: ", JSON.parse(retrievedObjectFour));
       var parsedObjectFour = JSON.parse(retrievedObjectFour);
-      var subjectold_four = parsedObjectFour[today_number];
+      var subjectold_four = parsedObjectFour;
       // Get time
       var retrievedTimeFour = localStorage.getItem("time");
 
@@ -791,7 +822,7 @@ export default {
       //   var subjectoldat = subjectold.replace(/(?:\r\n|\r|\n)/g, "@");
       var subjectoldatFour = subjectold_four.replace("/", "-");
       //   console.log(subjectold);
-      var urlFour = `http://127.0.0.1:8000/process/${subjectoldatFour}`;
+      var urlFour = `https://sos-time-table-app-backend.herokuapp.com/process/${subjectoldatFour}`;
       fetch(urlFour)
         .then((response_four) => {
           return response_four.json();
@@ -947,7 +978,7 @@ body {
 
 body {
   background-color: #eeeeee;
-  font-family: "helvetica", sans-serif;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 16px;
   transform: translate3d(0, 0, 0);
   background: linear-gradient(135deg, #2980b9 0%, #9b59b6 100%);
@@ -1421,12 +1452,12 @@ body {
 }
 h4 {
   display: block;
-  margin-top: 1.33em;
-  margin-bottom: 1.33em;
+  /* margin-top: 1.33em; */
+  /* margin-bottom: 1.33em; */
   margin-left: 0;
   margin-right: 0;
   font-weight: bold;
-  color: crimson;
+  color: rgb(130, 20, 220);
 }
 h3 {
   display: block;
@@ -2062,7 +2093,7 @@ h3 {
   border: 1px solid #888;
   width: 80%;
 }
-/* img {
+.img-tg {
   border-radius: 50%;
-} */
+}
 </style>
