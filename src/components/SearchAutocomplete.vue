@@ -24,7 +24,7 @@
               @keydown.down="onArrowDown"
               @keydown.up="onArrowUp"
               @keydown.enter="onEnter"
-              @mouseenter="getStudents"
+              @mouseenter.once="getStudents"
             />
           </div>
           <span id="spin"></span>
@@ -35,13 +35,13 @@
           </div> -->
           <div class="buttons">
             <!-- <button class="button" type="button">Free Classes</button> -->
-            <a href="https://forms.gle/4nwVW75dKLGu6btZ8">
+            <a href="https://mysostimetable.web.app/">
               <button
                 class="button"
                 type="button"
-                href="https://forms.gle/4nwVW75dKLGu6btZ8"
+                href="https://mysostimetable.web.app/"
               >
-                Report Issue
+                Refresh & Search-Again
               </button>
             </a>
           </div>
@@ -607,9 +607,9 @@ li a:hover {
   margin-top: 10px;
 }
 .button {
-  background-color: #f5f5f5;
+  background-color: #ff0000;
   border: none;
-  color: #707070;
+  color: #ffffff;
   font-size: 15px;
   padding: 10px 20px;
   margin: 5px;
@@ -619,7 +619,7 @@ li a:hover {
 .button:hover {
   border: 1px solid #c8c8c8;
   padding: 9px 19px;
-  color: #808080;
+  color: #fff9f9;
 }
 .button:focus {
   border: 1px solid #4885ed;

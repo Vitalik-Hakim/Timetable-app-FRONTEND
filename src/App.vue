@@ -1,30 +1,30 @@
 <template>
   <div
     id="app"
-    @mouseenter="
+    @mouseenter.once="
       getStudentsMethod();
       setData();
     "
-    @mousemove="setData()"
-    @mousedown="setData()"
-    @mouseleave="
+    @mousemove.once="setData()"
+    @mousedown.once="setData()"
+    @mouseleave.once="
       getStudentsMethod();
       setData();
     "
-    @mouseout="
+    @mouseout.once="
       getStudentsMethod();
       setData();
     "
-    @mouseover="
+    @mouseover.once="
       getStudentsMethod();
       setData();
     "
-    @mouseup="setData()"
-    @mousewheel="
+    @mouseup.once="setData()"
+    @mousewheel.once="
       getStudentsMethod();
       setData();
     "
-    @click="
+    @click.once="
       getStudentsMethod();
       setData();
     "
@@ -51,7 +51,7 @@ export default {
   data() {
     return {
       students: {
-        type: Array,
+        type: Object,
       },
     };
   },

@@ -3,13 +3,13 @@
   <div
     class="container"
     @mouseenter="setData"
-    @mousemove="setData"
-    @mousedown="setData"
-    @mouseleave="setData"
-    @mouseout="setData"
-    @mouseover="setData"
-    @mouseup="setData"
-    @mousewheel="setData"
+    @mousemove.once="setData"
+    @mousedown.once="setData"
+    @mouseleave.once="setData"
+    @mouseout.once="setData"
+    @mouseover.once="setData"
+    @mouseup.once="setData"
+    @mousewheel.once="setData"
     @keydown.enter="setData"
   >
     <!-- Loading Div -->
@@ -39,7 +39,7 @@
         <p>Some text in the Modal..</p>
       </div>
     </div>
-
+    <button v-if="iS_Loaded" @click="hidebtn">Click to Get Timetable</button>
     <!-- Loading Div -->
     <div class="element-card" @click="jqed" v-if="isNotSplit_one">
       <!-- First Card -->
@@ -64,9 +64,9 @@
         <h4>Subject:</h4>
         <b>{{ this_teacher_one }} </b> <br />
         <h4>ClassRoom:</h4>
-        <b> {{ this_period_one }} </b> <br />
+        <b> {{ this.teachers[this_period_one] }} </b> <br />
         <h4>Teacher:</h4>
-        <b>{{ this_room_one }} </b> <br />
+        <b>{{ this.teachers[this_room_one] }} </b> <br />
         <p>
           <button class="flip-btn" @click="jqed_reverse">Flip Back</button>
         </p>
@@ -147,9 +147,9 @@
         <h4>Subject:</h4>
         <b>{{ this_teacher_two }} </b> <br />
         <h4>ClassRoom:</h4>
-        <b> {{ this_period_two }} </b> <br />
+        <b> {{ this.teachers[this_period_two] }} </b> <br />
         <h4>Teacher:</h4>
-        <b>{{ this_room_two }} </b> <br />
+        <b>{{ this.teachers[this_room_two] }} </b> <br />
         <p>
           <button class="flip-btn" @click="jqed_reverse">Flip Back</button>
         </p>
@@ -232,9 +232,9 @@
         <h4>Subject:</h4>
         <b>{{ this_teacher_three }} </b> <br />
         <h4>ClassRoom:</h4>
-        <b> {{ this_period_three }} </b> <br />
+        <b> {{ this.teachers[this_period_three] }} </b> <br />
         <h4>Teacher:</h4>
-        <b>{{ this_room_three }} </b> <br />
+        <b>{{ this.teachers[this_room_three] }} </b> <br />
         <p>
           <button class="flip-btn" @click="jqed_reverse">Flip Back</button>
         </p>
@@ -321,9 +321,9 @@
         <h4>Subject:</h4>
         <b>{{ this_teacher_four }} </b> <br />
         <h4>ClassRoom:</h4>
-        <b> {{ this_period_four }} </b> <br />
+        <b> {{ this.teachers[this_period_four] }} </b> <br />
         <h4>Teacher:</h4>
-        <b>{{ this_room_four }} </b> <br />
+        <b>{{ this.teachers[this_room_four] }} </b> <br />
         <p>
           <button class="flip-btn" @click="jqed_reverse">Flip Back</button>
         </p>
@@ -430,7 +430,11 @@ export default {
       this_time: "Loading Data",
       this_ends: "Ends:",
       isSearch: false,
+      iS_Loaded: true,
       result_bool: false,
+      teachers: {
+        type: Object,
+      },
       this_current_period_one: "Current Period",
       this_period_two: "Loading Data",
       this_teacher_two: "Loading Data",
@@ -541,10 +545,8 @@ export default {
       };
       const today = getDayName(dayIndex);
       console.log(today);
-
       //FETCH PERIODS ONE BY ONE (REALLY BAD BUT IT WORKS)
       //   let today = "monday";
-
       function getDay(day) {
         if (day === "Monday") {
           // statement
@@ -597,8 +599,9 @@ export default {
       //   console.log("here: " + subjectold);
       //   var subjectoldat = subjectold.replace(/(?:\r\n|\r|\n)/g, "@");
       var subjectoldatOne = subjectold_one.replace("/", "-");
-      //   console.log(subjectold);
       var urlOne = `https://sos-time-table-app-backend.herokuapp.com/process/${subjectoldatOne}`;
+
+      //   console.log(subjectold);
       fetch(urlOne)
         .then((response_one) => {
           return response_one.json();
@@ -671,6 +674,7 @@ export default {
       var subjectoldatTwo = subjectold_two.replace("/", "-");
       //   console.log(subjectold);
       var urlTwo = `https://sos-time-table-app-backend.herokuapp.com/process/${subjectoldatTwo}`;
+
       fetch(urlTwo)
         .then((response_two) => {
           return response_two.json();
@@ -822,6 +826,7 @@ export default {
       //   var subjectoldat = subjectold.replace(/(?:\r\n|\r|\n)/g, "@");
       var subjectoldatFour = subjectold_four.replace("/", "-");
       //   console.log(subjectold);
+
       var urlFour = `https://sos-time-table-app-backend.herokuapp.com/process/${subjectoldatFour}`;
       fetch(urlFour)
         .then((response_four) => {
@@ -878,8 +883,34 @@ export default {
             this.this_teacher_four = teacher_four;
             this.this_period_four = subject_four;
             this.this_room_four = room_four;
+            this.iS_Loaded = false;
+            var students =
+              "https://sos-time-table-app-backend.herokuapp.com/load/teachers";
+            fetch(students)
+              .then((response) => {
+                return response.json();
+              })
+              .then((myJson) => {
+                let teachers_data = myJson;
+                this.teachers = teachers_data;
+
+                localStorage.removeItem("teachers");
+
+                window.localStorage.setItem(
+                  "teachers",
+                  JSON.stringify(teachers_data)
+                );
+                var teachers_dict = JSON.parse(
+                  window.localStorage.getItem("teachers")
+                );
+                console.log(teachers_dict["AAS"]);
+              });
           }
         });
+    },
+    hidebtn() {
+      this.setData();
+      this.iS_Loaded = false;
     },
     jqed() {
       jquery(document).ready(function () {
@@ -2095,5 +2126,15 @@ h3 {
 }
 .img-tg {
   border-radius: 50%;
+}
+button {
+  background-color: #21c900;
+  border: none;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 4px;
+  outline: none;
 }
 </style>
