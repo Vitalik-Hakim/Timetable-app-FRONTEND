@@ -8,7 +8,7 @@
           <div class="logo">
             <img
               class="img-google"
-              alt="Google"
+              alt="LOGO"
               src="../assets/timetable-logo-new.png"
             />
           </div>
@@ -27,12 +27,13 @@
               @mouseenter.once="getStudents"
             />
           </div>
-          <span id="spin"></span>
+
           <!-- <div class="buttons-search">
             <button class="button-search" type="button" @click="onEnter">
               Search Me!
             </button>
           </div> -->
+          <span id="spin"></span>
           <div class="buttons">
             <!-- <button class="button" type="button">Free Classes</button> -->
             <a href="https://mysostimetable.web.app/">
@@ -44,7 +45,11 @@
                 Refresh & Search-Again
               </button>
             </a>
+            <button class="button-1">
+              <a :href="this_link">View full time table</a>
+            </button>
           </div>
+          <span id="spin1"> {{ this_query }}</span>
         </center>
       </div>
     </html>
@@ -94,9 +99,12 @@ export default {
     return {
       isOpen: false,
       results: [],
+      result: "",
       search: "",
       students_data: "",
+      this_query: "",
       isLoading: false,
+      this_link: "Loading Data",
       arrowCounter: -1,
       url_base: "https://sos-time-table-app-backend.herokuapp.com/search/",
       query: "",
@@ -151,13 +159,14 @@ export default {
       this.isOpen = false;
       // this.student_name = document.getElementById("keyword").value;
       console.log(document.getElementById("keyword").value);
+      //
       // I will put my function to fetch here
       this.onEnterdelay();
-      fetch(`https://sos-time-table-app-backend.herokuapp.com/app/failsafe`)
-        .then((res) => {
-          return res.json();
-        })
-        .then(this.setResults);
+      // fetch(`https://sos-time-table-app-backend.herokuapp.com/app/failsafe`)
+      //   .then((res) => {
+      //     return res.json();
+      //   })
+      //   .then(this.setResults);
     },
     filterResults() {
       this.results = this.items.filter((item) => {
@@ -233,6 +242,7 @@ export default {
         this.student_name = document.getElementById("keyword").value;
         console.log(document.getElementById("keyword").value);
         var keyword = document.getElementById("keyword").value;
+        // document.getElementById("keyword").value = this.result;
         if (keyword == "") {
           alert("Please enter a query");
         } else {
@@ -244,8 +254,12 @@ export default {
             .then(this.setResults);
         }
 
-        localStorage.setItem("SEARCHED", "1");
+        localStorage.setItem("searh-term", keyword);
+        this.this_query = localStorage.getItem("searh-term");
       });
+    },
+    containsEmpty(a) {
+      return [].concat(a).sort().reverse().pop() === "";
     },
     setResults(results) {
       if (results === "No subject here") {
@@ -260,38 +274,138 @@ export default {
         var period_two = results[1];
         var period_three = results[2];
         var period_four = results[3];
-
+        // alert(this.containsEmpty(results));
         console.log(this.Period);
-        // console.log(results[1])
-        let time_raw = results[4];
-        console.log("Time:" + time_raw);
-        String.prototype.toHHMMSS = function () {
-          var sec_num = parseInt(this, 10); // don't forget the second param
-          var hours = Math.floor(sec_num / 3600);
-          var minutes = Math.floor((sec_num - hours * 3600) / 60);
-          var seconds = sec_num - hours * 3600 - minutes * 60;
+        if (this.containsEmpty(results) == true) {
+          results = [...new Set(results)];
+          // console.log(results[1])
+          var time_raw1_dup = results[4];
+          var time_raw2_dup = results[5];
+          var time_raw3_dup = results[6];
+          // var time_raw3_dup = results[6];
+          console.log("Time:" + time_raw);
+          String.prototype.toHHMMSS = function () {
+            var sec_num = parseInt(this, 10); // don't forget the second param
+            var hours = Math.floor(sec_num / 3600);
+            var minutes = Math.floor((sec_num - hours * 3600) / 60);
+            var seconds = sec_num - hours * 3600 - minutes * 60;
 
-          if (hours < 10) {
-            hours = "0" + hours;
-          }
-          if (minutes < 10) {
-            minutes = "0" + minutes;
-          }
-          if (seconds < 10) {
-            seconds = "0" + seconds;
-          }
-          return hours + ":" + minutes;
-        };
+            if (hours < 10) {
+              hours = "0" + hours;
+            }
+            if (minutes < 10) {
+              minutes = "0" + minutes;
+            }
+            if (seconds < 10) {
+              seconds = "0" + seconds;
+            }
+            return hours + ":" + minutes;
+          };
 
-        var time = `${time_raw}`.toHHMMSS();
-        console.log(`${time_raw}`.toHHMMSS());
-        // Store time  future use
-        localStorage.removeItem("time");
+          var time1_dup = `${time_raw1_dup}`.toHHMMSS();
+          var time2_dup = `${time_raw2_dup}`.toHHMMSS();
+          var time3_dup = `${time_raw3_dup}`.toHHMMSS();
+          // var time3_dup = `${time_raw3_dup}`.toHHMMSS();
+          console.log(`${time_raw3_dup}`.toHHMMSS());
+          // Store time  future use
+          // localStorage.removeItem("time");
+          // localStorage.removeItem("time1");
+          // localStorage.removeItem("time2");
+          // localStorage.removeItem("time3");
 
-        localStorage.setItem("time", time);
+          localStorage.setItem("time", time1_dup);
+          localStorage.setItem("time2", time2_dup);
+          localStorage.setItem("time3", time3_dup);
+          // localStorage.setItem("time3", time3_dup);
+        } else {
+          // console.log(results[1])
+          var time_raw = results[4];
+          var time_raw1 = results[5];
+          var time_raw2 = results[6];
+          var time_raw3 = results[7];
+          console.log("Time:" + time_raw);
+          String.prototype.toHHMMSS = function () {
+            var sec_num = parseInt(this, 10); // don't forget the second param
+            var hours = Math.floor(sec_num / 3600);
+            var minutes = Math.floor((sec_num - hours * 3600) / 60);
+            var seconds = sec_num - hours * 3600 - minutes * 60;
 
-        var retrievedTime = localStorage.getItem("time");
+            if (hours < 10) {
+              hours = "0" + hours;
+            }
+            if (minutes < 10) {
+              minutes = "0" + minutes;
+            }
+            if (seconds < 10) {
+              seconds = "0" + seconds;
+            }
+            return hours + ":" + minutes;
+          };
+
+          var time = `${time_raw}`.toHHMMSS();
+          var time1 = `${time_raw1}`.toHHMMSS();
+          var time2 = `${time_raw2}`.toHHMMSS();
+          var time3 = `${time_raw3}`.toHHMMSS();
+          console.log(`${time_raw}`.toHHMMSS());
+          // Store time  future use
+          localStorage.removeItem("time");
+          localStorage.removeItem("time1");
+          localStorage.removeItem("time2");
+          localStorage.removeItem("time3");
+
+          localStorage.setItem("time", time);
+          localStorage.setItem("time1", time1);
+          localStorage.setItem("time2", time2);
+          localStorage.setItem("time3", time3);
+        }
+        // // console.log(results[1])
+        // var time_raw = results[4];
+        // var time_raw1 = results[5];
+        // var time_raw2 = results[6];
+        // var time_raw3 = results[7];
+        // console.log("Time:" + time_raw);
+        // String.prototype.toHHMMSS = function () {
+        //   var sec_num = parseInt(this, 10); // don't forget the second param
+        //   var hours = Math.floor(sec_num / 3600);
+        //   var minutes = Math.floor((sec_num - hours * 3600) / 60);
+        //   var seconds = sec_num - hours * 3600 - minutes * 60;
+
+        //   if (hours < 10) {
+        //     hours = "0" + hours;
+        //   }
+        //   if (minutes < 10) {
+        //     minutes = "0" + minutes;
+        //   }
+        //   if (seconds < 10) {
+        //     seconds = "0" + seconds;
+        //   }
+        //   return hours + ":" + minutes;
+        // };
+
+        // var time = `${time_raw}`.toHHMMSS();
+        // var time1 = `${time_raw1}`.toHHMMSS();
+        // var time2 = `${time_raw2}`.toHHMMSS();
+        // var time3 = `${time_raw3}`.toHHMMSS();
+        // console.log(`${time_raw}`.toHHMMSS());
+        // // Store time  future use
+        // localStorage.removeItem("time");
+        // localStorage.removeItem("time1");
+        // localStorage.removeItem("time2");
+        // localStorage.removeItem("time3");
+
+        // localStorage.setItem("time", time);
+        // localStorage.setItem("time1", time1);
+        // localStorage.setItem("time2", time2);
+        // localStorage.setItem("time3", time3);
+        var link = results[results.length - 1];
+        localStorage.removeItem("link");
+        localStorage.setItem("link", link);
+        localStorage.setItem("link", link);
+        var retrieved_link = localStorage.getItem("link");
+        var retrievedTime = localStorage.getItem("time1");
         this.this_time = retrievedTime;
+        // var retrieved_link = localStorage.getItem("link");
+        this.this_link = retrieved_link;
         // Store periods
         // Period One
         localStorage.removeItem("PeriodOne");
@@ -607,7 +721,7 @@ li a:hover {
   margin-top: 10px;
 }
 .button {
-  background-color: #ff0000;
+  background-color: crimson;
   border: none;
   color: #ffffff;
   font-size: 15px;
@@ -622,6 +736,25 @@ li a:hover {
   color: #fff9f9;
 }
 .button:focus {
+  border: 1px solid #4885ed;
+  padding: 9px 19px;
+}
+.button-1 {
+  background-color: #2d7ffa;
+  border: none;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 4px;
+  outline: none;
+}
+.button-1:hover {
+  border: 1px solid #c8c8c8;
+  padding: 9px 19px;
+  color: #fff9f9;
+}
+.button-1:focus {
   border: 1px solid #4885ed;
   padding: 9px 19px;
 }
@@ -695,5 +828,11 @@ li a:hover {
   100% {
     content: "Report issue when there is a mistake or error code eg. 404";
   }
+}
+
+#spin1 {
+  color: rgb(0, 0, 0);
+  font-size: 18px;
+  font-family: "Open Sans", "Helvetica Neue", sans-serif;
 }
 </style>

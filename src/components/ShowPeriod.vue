@@ -39,6 +39,7 @@
         <p>Some text in the Modal..</p>
       </div>
     </div>
+
     <button v-if="iS_Loaded" @click="hidebtn">Click to Get Timetable</button>
     <!-- Loading Div -->
     <div class="element-card" @click="jqed" v-if="isNotSplit_one">
@@ -112,6 +113,9 @@
           <span class="atomic-number" @click="jqed">{{
             this_room_split_one2
           }}</span>
+          <span class="atomic-number" @click="jqed">{{
+            this_room_split_one2
+          }}</span>
           <span class="atomic-mass" @click="jqed">{{
             this_teacher_split_one2
           }}</span>
@@ -140,6 +144,10 @@
         </h1>
         <p class="title" @click="jqed">{{ this_current_period_two }}</p>
         <span class="atomic-number" @click="jqed">{{ this_room_two }}</span>
+        <span class="atomic-number-1" @click="jqed">
+          <h4>{{ this_starts }}</h4>
+          {{ this_time1 }}
+        </span>
         <span class="atomic-mass" @click="jqed">{{ this_teacher_two }}</span>
         <button class="flip-btn" @click="jqed">Flip Card</button>
       </div>
@@ -225,6 +233,10 @@
         </h1>
         <p class="title" @click="jqed">{{ this_current_period_three }}</p>
         <span class="atomic-number" @click="jqed">{{ this_room_three }}</span>
+        <span class="atomic-number-1" @click="jqed">
+          <h4>{{ this_starts }}</h4>
+          {{ this_time2 }}
+        </span>
         <span class="atomic-mass" @click="jqed">{{ this_teacher_three }}</span>
         <button class="flip-btn" @click="jqed">Flip Card</button>
       </div>
@@ -314,6 +326,10 @@
         </h1>
         <p class="title" @click="jqed">{{ this_current_period_four }}</p>
         <span class="atomic-number" @click="jqed">{{ this_room_four }}</span>
+        <span class="atomic-number-1" @click="jqed">
+          <h4>{{ this_starts }}</h4>
+          {{ this_time3 }}
+        </span>
         <span class="atomic-mass" @click="jqed">{{ this_teacher_four }}</span>
         <button class="flip-btn" @click="jqed">Flip Card</button>
       </div>
@@ -391,16 +407,22 @@
     </div>
   </div>
 
-  <a
-    class="suppoprt-me"
+  <button
+    class="button-2"
     href="https://forms.gle/4nwVW75dKLGu6btZ8"
     target="_blank"
   >
-    <h4>Report Issues</h4>
-    <img
-      src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white"
-    />
-  </a>
+    <a href="https://forms.gle/4nwVW75dKLGu6btZ8" target="_blank"
+      >Report Issues</a
+    >
+  </button>
+  <button
+    class="button-3"
+    href="https://forms.gle/4nwVW75dKLGu6btZ8"
+    target="_blank"
+  >
+    <a href="https://github.com/Vitalik-Hakim" target="_blank">Made with ❤️</a>
+  </button>
 </template>
 
 <script>
@@ -428,7 +450,12 @@ export default {
       this_period_split_one: "Loading Data",
       this_room_split_one: "Loading Data",
       this_time: "Loading Data",
-      this_ends: "Ends:",
+      this_time2: "Loading Data",
+      this_time3: "Loading Data",
+      this_time4: "Loading Data",
+      this_link: "Loading Data",
+      this_ends: "Started:",
+      this_starts: "Starts:",
       isSearch: false,
       iS_Loaded: true,
       result_bool: false,
@@ -593,9 +620,24 @@ export default {
       // var myArray = dateTime.split(" ");
 
       // localStorage.setItem("time", myArray[1]);
-      var retrievedTimeOne = localStorage.getItem("time");
-
-      this.this_time = retrievedTimeOne;
+      // var retrievedTimeOne = localStorage.getItem("time1");
+      // var retrievedTimeOne = localStorage.getItem("time1");
+      var retrievedTimeOne = localStorage.getItem("time1");
+      var retrievedTime_dup = localStorage.getItem("time");
+      var retrievedTime_two = localStorage.getItem("time2");
+      var retrievedTime_three = localStorage.getItem("time3");
+      var retrieved_link = localStorage.getItem("link");
+      this.this_time1 = retrievedTimeOne;
+      this.this_time = retrievedTime_dup;
+      // if (isNaN(retrievedTimeOne)) {
+      //   this.this_time = retrievedTime_dup;
+      // } else {
+      //   this.this_time = retrievedTimeOne;
+      // }
+      console.log(retrievedTime_dup);
+      this.this_time2 = retrievedTime_two;
+      this.this_time3 = retrievedTime_three;
+      this.this_link = retrieved_link;
       //   console.log("here: " + subjectold);
       //   var subjectoldat = subjectold.replace(/(?:\r\n|\r|\n)/g, "@");
       var subjectoldatOne = subjectold_one.replace("/", "-");
@@ -666,9 +708,9 @@ export default {
       var parsedObjectTwo = JSON.parse(retrievedObjectTwo);
       var subjectold_two = parsedObjectTwo;
       // Get time
-      var retrievedTimeTwo = localStorage.getItem("time");
+      // var retrievedTimeTwo = localStorage.getItem("time");
 
-      this.this_time = retrievedTimeTwo;
+      // this.this_time = retrievedTimeTwo;
       //   console.log("here: " + subjectold);
       //   var subjectoldat = subjectold.replace(/(?:\r\n|\r|\n)/g, "@");
       var subjectoldatTwo = subjectold_two.replace("/", "-");
@@ -741,9 +783,9 @@ export default {
       var parsedObjectThree = JSON.parse(retrievedObjectThree);
       var subjectold_three = parsedObjectThree;
       // Get time
-      var retrievedTimeThree = localStorage.getItem("time");
+      // var retrievedTimeThree = localStorage.getItem("time");
 
-      this.this_time = retrievedTimeThree;
+      // this.this_time = retrievedTimeThree;
       //   console.log("here: " + subjectold);
       //   var subjectoldat = subjectold.replace(/(?:\r\n|\r|\n)/g, "@");
       var subjectoldatThree = subjectold_three.replace("/", "-");
@@ -819,9 +861,9 @@ export default {
       var parsedObjectFour = JSON.parse(retrievedObjectFour);
       var subjectold_four = parsedObjectFour;
       // Get time
-      var retrievedTimeFour = localStorage.getItem("time");
+      // var retrievedTimeFour = localStorage.getItem("time");
 
-      this.this_time = retrievedTimeFour;
+      // this.this_time = retrievedTimeFour;
       //   console.log("here: " + subjectold);
       //   var subjectoldat = subjectold.replace(/(?:\r\n|\r|\n)/g, "@");
       var subjectoldatFour = subjectold_four.replace("/", "-");
@@ -1089,6 +1131,13 @@ body {
   font-size: 25px;
   color: crimson;
 }
+.element-card .front-facing .atomic-number-1 {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 18px;
+  color: #2e0fdd;
+}
 .element-card .front-facing .atomic-mass {
   position: absolute;
   bottom: 10px;
@@ -1099,7 +1148,7 @@ body {
 .element-card .front-facing .atomic-mass-1 {
   position: absolute;
   bottom: 10px;
-  right: 340px;
+  right: 320px;
   font-size: 18px;
   color: #2e0fdd;
 }
@@ -2129,6 +2178,26 @@ h3 {
 }
 button {
   background-color: #21c900;
+  border: none;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 4px;
+  outline: none;
+}
+.button-2 {
+  background-color: red;
+  border: none;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 4px;
+  outline: none;
+}
+.button-3 {
+  background-color: #009df8;
   border: none;
   color: #ffffff;
   font-size: 15px;
