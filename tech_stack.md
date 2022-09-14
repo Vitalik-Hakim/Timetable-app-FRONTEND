@@ -17,4 +17,6 @@ firebase allow
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 
 FALLBACK BACKEND
-https://timetable-app.onrender.com/
+1) https://timetable-app.onrender.com/
+2) https://sostimetable-vitalik-hakim.koyeb.app/
+3) 
