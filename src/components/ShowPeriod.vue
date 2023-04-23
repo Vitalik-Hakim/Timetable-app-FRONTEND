@@ -40,7 +40,15 @@
       </div>
     </div>
 
-    <button v-if="iS_Loaded" @click="hidebtn">Click to Get Timetable</button>
+    <button
+      v-if="iS_Loaded"
+      @click="hidebtn"
+      class="button-timetable"
+      @mouseover.once="hidebtn"
+      @mousemove.once="hidebtn"
+    >
+      Click to Get Timetable
+    </button>
     <!-- Loading Div -->
     <div class="element-card" @click="jqed" v-if="isNotSplit_one">
       <!-- First Card -->
@@ -145,8 +153,8 @@
         <p class="title" @click="jqed">{{ this_current_period_two }}</p>
         <span class="atomic-number" @click="jqed">{{ this_room_two }}</span>
         <span class="atomic-number-1" @click="jqed">
-          <h4>{{ this_starts }}</h4>
-          {{ this_time1 }}
+          <!-- <h4>{{ this_starts }}</h4>
+          {{ this_time2 }} -->
         </span>
         <span class="atomic-mass" @click="jqed">{{ this_teacher_two }}</span>
         <button class="flip-btn" @click="jqed">Flip Card</button>
@@ -234,8 +242,8 @@
         <p class="title" @click="jqed">{{ this_current_period_three }}</p>
         <span class="atomic-number" @click="jqed">{{ this_room_three }}</span>
         <span class="atomic-number-1" @click="jqed">
-          <h4>{{ this_starts }}</h4>
-          {{ this_time2 }}
+          <!-- <h4>{{ this_starts }}</h4>
+          {{ this_time2 }} -->
         </span>
         <span class="atomic-mass" @click="jqed">{{ this_teacher_three }}</span>
         <button class="flip-btn" @click="jqed">Flip Card</button>
@@ -327,8 +335,8 @@
         <p class="title" @click="jqed">{{ this_current_period_four }}</p>
         <span class="atomic-number" @click="jqed">{{ this_room_four }}</span>
         <span class="atomic-number-1" @click="jqed">
-          <h4>{{ this_starts }}</h4>
-          {{ this_time3 }}
+          <!-- <h4>{{ this_starts }}</h4>
+          {{ this_time3 }} -->
         </span>
         <span class="atomic-mass" @click="jqed">{{ this_teacher_four }}</span>
         <button class="flip-btn" @click="jqed">Flip Card</button>
@@ -450,6 +458,7 @@ export default {
       this_period_split_one: "Loading Data",
       this_room_split_one: "Loading Data",
       this_time: "Loading Data",
+      this_time1: "Loading Data",
       this_time2: "Loading Data",
       this_time3: "Loading Data",
       this_time4: "Loading Data",
@@ -518,7 +527,7 @@ export default {
       isNotSplit_three: false,
       isNotSplit_four: false,
       isNotSplit: false,
-      url_base: "https://sos-time-table-app-backend.herokuapp.com/search/",
+      url_base: "https://sostimetable-vitalik-hakim.koyeb.app/search/",
       query: "",
       Period: {},
       this_loading_div: true,
@@ -641,7 +650,7 @@ export default {
       //   console.log("here: " + subjectold);
       //   var subjectoldat = subjectold.replace(/(?:\r\n|\r|\n)/g, "@");
       var subjectoldatOne = subjectold_one.replace("/", "-");
-      var urlOne = `https://sos-time-table-app-backend.herokuapp.com/process/${subjectoldatOne}`;
+      var urlOne = `https://sostimetable-vitalik-hakim.koyeb.app/process/${subjectoldatOne}`;
 
       //   console.log(subjectold);
       fetch(urlOne)
@@ -715,7 +724,7 @@ export default {
       //   var subjectoldat = subjectold.replace(/(?:\r\n|\r|\n)/g, "@");
       var subjectoldatTwo = subjectold_two.replace("/", "-");
       //   console.log(subjectold);
-      var urlTwo = `https://sos-time-table-app-backend.herokuapp.com/process/${subjectoldatTwo}`;
+      var urlTwo = `https://sostimetable-vitalik-hakim.koyeb.app/process/${subjectoldatTwo}`;
 
       fetch(urlTwo)
         .then((response_two) => {
@@ -790,7 +799,7 @@ export default {
       //   var subjectoldat = subjectold.replace(/(?:\r\n|\r|\n)/g, "@");
       var subjectoldatThree = subjectold_three.replace("/", "-");
       //   console.log(subjectold);
-      var urlThree = `https://sos-time-table-app-backend.herokuapp.com/process/${subjectoldatThree}`;
+      var urlThree = `https://sostimetable-vitalik-hakim.koyeb.app/process/${subjectoldatThree}`;
       fetch(urlThree)
         .then((response_three) => {
           return response_three.json();
@@ -869,7 +878,7 @@ export default {
       var subjectoldatFour = subjectold_four.replace("/", "-");
       //   console.log(subjectold);
 
-      var urlFour = `https://sos-time-table-app-backend.herokuapp.com/process/${subjectoldatFour}`;
+      var urlFour = `https://sostimetable-vitalik-hakim.koyeb.app/process/${subjectoldatFour}`;
       fetch(urlFour)
         .then((response_four) => {
           return response_four.json();
@@ -927,7 +936,7 @@ export default {
             this.this_room_four = room_four;
             this.iS_Loaded = false;
             var students =
-              "https://sos-time-table-app-backend.herokuapp.com/load/teachers";
+              "https://sostimetable-vitalik-hakim.koyeb.app/load/teachers";
             fetch(students)
               .then((response) => {
                 return response.json();
@@ -2180,6 +2189,18 @@ button {
   background-color: #21c900;
   border: none;
   color: #ffffff;
+  font-size: 15px;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 4px;
+  outline: none;
+}
+.button-timetable {
+  background-color: #21c900;
+  border: none;
+  position: fixed;
+  color: #ffffff;
+  top: 45.5%;
   font-size: 15px;
   padding: 10px 20px;
   margin: 5px;

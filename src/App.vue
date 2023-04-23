@@ -31,22 +31,19 @@
     @keydown.enter="setData"
   >
     <SearchAutocomplete :items="students" />
-    <!-- :items="" -->
+    <FreeClasses />
   </div>
 </template>
 
 <script>
 import SearchAutocomplete from "./components/SearchAutocomplete.vue";
-// import Vue from "vue";
-// import Vue3TouchEvents from "vue3-touch-events";
 import setData from "./components/ShowPeriod.vue";
-// import students_data from "./components/SearchAutocomplete.vue";
-// Vue.use(Vue3TouchEvents);
+import FreeClasses from "./components/FreeClasses.vue";
 export default {
   name: "App",
   components: {
     SearchAutocomplete,
-    // ShowPeriod,
+    FreeClasses,
   },
   data() {
     return {
@@ -58,7 +55,7 @@ export default {
   methods: {
     getStudentsMethod() {
       var students =
-        "https://sos-time-table-app-backend.herokuapp.com/load/students";
+        "https://sostimetable-vitalik-hakim.koyeb.app/load/students";
       fetch(students)
         .then((response) => {
           return response.json();

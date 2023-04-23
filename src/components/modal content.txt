@@ -1,0 +1,53 @@
+            <div class="modal-body relative p-4">
+              <!-- Render Cards Here -->
+              <div class="grid grid-cols-4 gap-4">
+                <div
+                  v-for="product in classfree"
+                  class="product-item"
+                  v-bind:key="product.id"
+                >
+                  <div
+                    class="block rounded-lg shadow-lg bg-white max-w-sm text-center"
+                    @mouseenter="get_key(product)"
+                  >
+                    <div class="py-3 px-6 border-b border-gray-300"></div>
+                    <div class="p-6">
+                      <h5 class="text-red-500 text-xl font-medium mb-2">
+                        {{ product }}
+                      </h5>
+                      <p
+                        class="text-blue-600 text-base mb-4"
+                        v-if="
+                          this.period_time_db[
+                            this.estimated_periods[product]
+                          ] == ''
+                        "
+                      >
+                        Free until school ends
+                      </p>
+                      <p
+                        class="text-blue-600 text-base mb-4"
+                        v-if="
+                          this.period_time_db[
+                            this.estimated_periods[product]
+                          ] != ''
+                        "
+                      >
+                        {{ this.free }}
+                        {{
+                          this.period_time_db[this.estimated_periods[product]]
+                        }}
+                      </p>
+
+                      <!-- for {{this.estimated_periods[product]}} periods -->
+                    </div>
+                    <div
+                      class="py-3 px-6 border-t border-gray-300 text-green-600"
+                    >
+                      <a :href="classkeys">View full Class timetable</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Bossman down here -->
+            </div>

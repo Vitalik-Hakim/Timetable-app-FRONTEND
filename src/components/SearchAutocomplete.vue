@@ -3,8 +3,6 @@
     <html>
       <div>
         <center>
-          <!-- <header>
-    </header> -->
           <div class="logo">
             <img
               class="img-google"
@@ -36,17 +34,27 @@
           <span id="spin"></span>
           <div class="buttons">
             <!-- <button class="button" type="button">Free Classes</button> -->
-            <a href="https://mysostimetable.web.app/">
+            <a href="https://ib2gpa.pages.dev/">
               <button
-                class="button"
+                class="inline-block px-6 py-3.5 bg-purple-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-purple-600 hover:shadow-lg focus:bg-blue-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-700 active:shadow-lg transition duration-150 ease-in-out"
+                type="button"
+                href="https://ib2gpa.pages.dev/"
+                target="_blank"
+              >
+                IB2GPA [AD]
+              </button>
+            </a>
+            <!-- <a href="https://mysostimetable.web.app/">
+              <button
+                class="inline-block px-6 py-3.5 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-red-600 hover:shadow-lg focus:bg-red-600 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-700 active:shadow-lg transition duration-150 ease-in-out"
                 type="button"
                 href="https://mysostimetable.web.app/"
               >
-                Refresh & Search-Again
+                Refresh
               </button>
-            </a>
+            </a> -->
             <button class="button-1">
-              <a :href="this_link">View full time table</a>
+              <a :href="this_link">Full TimeTable</a>
             </button>
           </div>
           <span id="spin1"> {{ this_query }}</span>
@@ -106,7 +114,7 @@ export default {
       isLoading: false,
       this_link: "Loading Data",
       arrowCounter: -1,
-      url_base: "https://sos-time-table-app-backend.herokuapp.com/search/",
+      url_base: "https://sostimetable-vitalik-hakim.koyeb.app/search/",
       query: "",
       Period: {},
       student_name: "",
@@ -132,7 +140,7 @@ export default {
   methods: {
     getStudents() {
       var students =
-        "https://sos-time-table-app-backend.herokuapp.com/load/students";
+        "https://sostimetable-vitalik-hakim.koyeb.app/load/students";
       fetch(students)
         .then((response) => {
           return response.json();
@@ -162,7 +170,7 @@ export default {
       //
       // I will put my function to fetch here
       this.onEnterdelay();
-      // fetch(`https://sos-time-table-app-backend.herokuapp.com/app/failsafe`)
+      // fetch(`https://sostimetable-vitalik-hakim.koyeb.app/app/failsafe`)
       //   .then((res) => {
       //     return res.json();
       //   })
@@ -262,8 +270,8 @@ export default {
       return [].concat(a).sort().reverse().pop() === "";
     },
     setResults(results) {
-      if (results === "No subject here") {
-        alert(results);
+      if (results === "This time is beyond school hours!") {
+        alert("Beyond School day Hours: Please come back tomorrow morning");
       } else if (results === "Error: Beyond School day Hours") {
         alert(results);
       } else if (results === "Couldn't find your name in the database!") {
@@ -739,8 +747,8 @@ li a:hover {
   border: 1px solid #4885ed;
   padding: 9px 19px;
 }
-.button-1 {
-  background-color: #2d7ffa;
+.button-3 {
+  background-color: rgb(219, 9, 51);
   border: none;
   color: #ffffff;
   font-size: 15px;
@@ -749,16 +757,54 @@ li a:hover {
   border-radius: 4px;
   outline: none;
 }
-.button-1:hover {
+.button-3:hover {
   border: 1px solid #c8c8c8;
   padding: 9px 19px;
   color: #fff9f9;
 }
-.button-1:focus {
+.button-3:focus {
   border: 1px solid #4885ed;
   padding: 9px 19px;
 }
-
+.button-1 {
+  background-color: #2d7ffa;
+  border: none;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 10px 20px;
+  margin: 5px;
+  margin-right: 0px;
+  border-radius: 4px;
+  outline: none;
+}
+.button-1:hover {
+  border: 1px solid #0a37cc;
+  padding: 9px 19px;
+  color: #fff9f9;
+}
+.button-1:focus {
+  border: 1px solid #0e61f0;
+  padding: 9px 19px;
+}
+.button-4 {
+  background-color: #0bb805f8;
+  border: none;
+  color: #ffffff;
+  font-size: 15px;
+  padding: 10px 20px;
+  margin: 5px;
+  border-radius: 4px;
+  outline: none;
+}
+.button-4:hover {
+  border: 1px solid #07e085;
+  padding: 9px 19px;
+  color: #fff9f9;
+}
+.button-4:focus {
+  border: 1px solid #48ed79;
+  padding: 9px 19px;
+}
 .button-search {
   background-color: crimson;
   border: none;

@@ -58,7 +58,7 @@ export default {
   methods: {
     getStudentsMethod() {
       var students =
-        "https://sos-time-table-app-backend.herokuapp.com/load/students";
+        "https:/sostimetable-vitalik-hakim.koyeb.app/load/students";
       fetch(students)
         .then((response) => {
           return response.json();
