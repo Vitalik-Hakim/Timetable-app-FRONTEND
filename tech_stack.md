@@ -25,5 +25,5 @@ https:/sostimetable-vitalik-hakim.koyeb.app/
 =======
 1) https://timetable-app.onrender.com/
 2) https://sostimetable-vitalik-hakim.koyeb.app/
-3) 
+3) https://mysostimetable.2.ie-1.fl0.io/
 >>>>>>> 149ae4a6d9e1f64e470a68113cd626c792c80918
